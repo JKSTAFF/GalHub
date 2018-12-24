@@ -11,17 +11,21 @@ exit /B
 :gotAdmin
 if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
 title brandnew_deploy
-:::  __  __  _       _        _   _            _
-::: |  \/  || |     / \   ___| |_(_)_   ____ _| |_ ___  _ __
-::: | |\/| / __)   / _ \ / __| __| \ \ / / _` | __/ _ \| '__|
-::: | |  | \__ \  / ___ \ (__| |_| |\ V / (_| | || (_) | |
-::: |_|  |_(   / /_/   \_\___|\__|_| \_/ \__,_|\__\___/|_|
-:::         |_|                       Powered by Vector Di-gi
-::: =========================================================
-set /p host=Input host_path:
-set /p para=Input parasite_path:
+:::  ____       _ _   _       _
+::: / ___| __ _| | | | |_   _| |__
+:::| |  _ / _` | | |_| | | | | '_ \
+:::| |_| | (_| | |  _  | |_| | |_) |
+::: \____|\__,_|_|_| |_|\__,_|_.__/
+:::                  brandnew_deploy
+::: ==================================
+set /p host_path=Input savedata path for host:
+set /p host_id=Input rungameid for host:
+set /p para_path=Input savedata path for pariasite:
+set /p para_id=Input rungameid for parasite:
 
-if exist %para% (move %para%\* %host%)
-mklink /d "%para%" "%host%"
+if exist %para_path% (
+    move %para_path%\* %host_path%
+)else ( md %para_path% )
+mklink /d "%para_path%" "%host_path%"
 
 pause
