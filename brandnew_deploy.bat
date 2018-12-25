@@ -17,15 +17,12 @@ title brandnew_deploy
 :::| |_| | (_| | |  _  | |_| | |_) |
 ::: \____|\__,_|_|_| |_|\__,_|_.__/
 :::                  brandnew_deploy
-::: ==================================
+::: ================================
 set /p host_path=Input savedata path for host:
-set /p host_id=Input rungameid for host:
 set /p para_path=Input savedata path for pariasite:
-set /p para_id=Input rungameid for parasite:
-
 if exist %para_path% (
     move %para_path%\* %host_path%
 )else ( md %para_path% )
 mklink /d "%para_path%" "%host_path%"
-
+echo Deployed once for all
 pause
