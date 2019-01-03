@@ -19,12 +19,14 @@ title galhub_deployer
 :::          Powered by Vector Di-gi
 ::: ================================
 echo.
-choice /c /m:"Reflect Savedata Path?(y/N)"
-if %errorlevel%==y goto relay
-else 
-choice /c /m:"Create Game Launcher?(y/N)"
-if %errorlevel%==y goto generator
-else pause
+choice /m:"Reflect Savedata Path?"
+if %errorlevel%==1 goto relay
+if %errorlevel%==2 echo skip
+echo.
+choice /m:"Create Game Launcher?"
+if %errorlevel%==1 goto generator
+if %errorlevel%==2 echo skip
+pause
 
 :relay
 set /p host_path=Input Savedata Path For Host:
